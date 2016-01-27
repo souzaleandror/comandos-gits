@@ -1,0 +1,57 @@
+Configurações básicas
+
+É importante nos identificarmos para o Git, informando nosso nome e e-mail. Em um terminal, execute os comandos a seguir:
+
+$ git config --global user.name "Fulano da Silva"
+$ git config --global user.email fulanodasilva.git@gmail.com
+
+Antes de utilizarmos o Git, vamos criar na sua pasta pessoal, um diretório chamado citacoes com um arquivo filmes.txt.
+Dentro do arquivo filmes.txt, coloque o seguinte conteúdo:
+
+"Não há certezas, apenas oportunidades." (V de Vingança)
+"Diga ’olá’ para meu pequeno amigo!" (Scarface)
+
+Criando um repositório
+Abra um terminal e vá até o diretório citacoes.
+
+$ cd ~/citacoes
+
+Para transformar o diretório atual em um repositório do Git, basta executar o comando git init:
+
+$ git init
+
+Deverá aparecer uma mensagem semelhante à seguinte:
+Initialized empty Git repository in /home/fulano/citacoes/.git/
+
+Podemos ver a situação dos arquivos no repositório Git com o comando:
+
+$ git status
+
+Para que o arquivo seja rastreado, devemos executar o seguinte comando:
+
+$ git add filmes.txt
+
+Para gravarmos as mudanças no repositório, devemos executar o comando:
+
+$ git commit -m "Arquivo inicial de citacoes"
+
+Para rastrearmos amodificação, devemos executar o comando git add novamente:
+
+$ git add filmes.txt
+$ git commit -m "Inserindo nova citacao"
+
+Para verificar o histórico das alterações gravadas no repositório, podemos executar o comando git log:
+
+$ git log
+
+Criando um repositório no GitHub
+
+No Repository name, devemos preencher o nome do repositório remoto.
+No nosso caso, vamos preencher com “citacoes”.
+
+Então, execute o comando git remote, conforme o que segue:
+
+$ git remote add origin https://github.com/souzaleandror/comandos-gits
+
+Para isso, basta executar o comando git push, da seguinte forma:
+$ git push origin master
