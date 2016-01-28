@@ -55,3 +55,51 @@ $ git remote add origin https://github.com/souzaleandror/comandos-gits
 
 Para isso, basta executar o comando git push, da seguinte forma:
 $ git push origin master
+
+Para informar ao Git que o arquivo index.html deve ser rastreado, utilizamos o comando:
+$ git add index.html
+
+Na verdade, não! Podemos rastrear todos esses arquivos de uma vez só com o comando:
+$ git add .
+
+A área de stage
+Quando informamos para o Git que queremos rastrear um arquivo, executando git add pela primeira vez, o Git coloca esse arquivo em uma área especial do repositório, chamada de stage.
+
+Será que teremos sempre que lembrar de evitar o git add desses arquivos?
+Se for assim, não poderemos mais utilizar git add ., já que esse comando rastreia todos os arquivos.
+Para resolver isso, o Git tem um mecanismo que permite ignorarmos arquivos.
+Basta criarmos umarquivo chamado .gitignore no diretório principal do nosso projeto, com os nomes dos arquivos que queremos ignorar.
+
+Observe, porém, que o arquivo .gitignore apareceu como não rastreado.
+É importante que esse arquivo seja rastreado, porque evoluirá junto com o repositório. Por isso, ao criar o .gitignore, não esqueça de adicioná-lo à área de stage com o comando:
+$ git add .gitignore
+
+todo.txt
+tmp/
+
+Há um projeto no GitHub com exemplos de arquivos .gitignore
+para diversas linguagens de programação e tecnologias: https://github.
+com/github/gitignore
+
+Rastreando e comitando mudanças de uma só vez
+$ git commit -a -m "Inserindo titulo e diminuindo tamanho da pagina"
+
+Verificando o histórico do seu repositório
+$ git log
+$ git log -n 2
+$ git log --oneline
+$ git log --stat
+$ git log -n 2 --oneline --stat
+
+Para sairmos do resultados do git log, devemos apertar a tecla q.
+Podemos também combinar as várias opções do comando git log
+
+Verificando mudanças ainda não rastreadas
+Se quisermos revisar amodificação efetuada, verificando as diferenças entre
+o arquivo alterado e o que foi comitado anteriormente, podemos usar o
+comando:
+$ git diff
+
+É possível mostrar as diferenças entre os arquivos na área de stage e a
+última versão que foi comitada utilizando a opção --staged:
+$ git diff --staged
