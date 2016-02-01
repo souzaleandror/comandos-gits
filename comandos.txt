@@ -1,29 +1,29 @@
-Configura��es b�sicas
+Configurações básicas
 
-� importante nos identificarmos para o Git, informando nosso nome e e-mail. Em um terminal, execute os comandos a seguir:
+É importante nos identificarmos para o Git, informando nosso nome e e-mail. Em um terminal, execute os comandos a seguir:
 
 $ git config --global user.name "Fulano da Silva"
 $ git config --global user.email fulanodasilva.git@gmail.com
 
-Antes de utilizarmos o Git, vamos criar na sua pasta pessoal, um diret�rio chamado citacoes com um arquivo filmes.txt.
-Dentro do arquivo filmes.txt, coloque o seguinte conte�do:
+Antes de utilizarmos o Git, vamos criar na sua pasta pessoal, um diretório chamado citacoes com um arquivo filmes.txt.
+Dentro do arquivo filmes.txt, coloque o seguinte conteúdo:
 
-"N�o h� certezas, apenas oportunidades." (V de Vingan�a)
-"Diga �ol� para meu pequeno amigo!" (Scarface)
+"Não há certezas, apenas oportunidades." (V de Vingança)
+"Diga ’olá’ para meu pequeno amigo!" (Scarface)
 
-Criando um reposit�rio
-Abra um terminal e v� at� o diret�rio citacoes.
+Criando um repositório
+Abra um terminal e vá até o diretório citacoes.
 
 $ cd ~/citacoes
 
-Para transformar o diret�rio atual em um reposit�rio do Git, basta executar o comando git init:
+Para transformar o diretório atual em um repositório do Git, basta executar o comando git init:
 
 $ git init
 
-Dever� aparecer uma mensagem semelhante � seguinte:
+Deverá aparecer uma mensagem semelhante à seguinte:
 Initialized empty Git repository in /home/fulano/citacoes/.git/
 
-Podemos ver a situa��o dos arquivos no reposit�rio Git com o comando:
+Podemos ver a situação dos arquivos no repositório Git com o comando:
 
 $ git status
 
@@ -31,25 +31,25 @@ Para que o arquivo seja rastreado, devemos executar o seguinte comando:
 
 $ git add filmes.txt
 
-Para gravarmos as mudan�as no reposit�rio, devemos executar o comando:
+Para gravarmos as mudanças no repositório, devemos executar o comando:
 
 $ git commit -m "Arquivo inicial de citacoes"
 
-Para rastrearmos amodifica��o, devemos executar o comando git add novamente:
+Para rastrearmos amodificação, devemos executar o comando git add novamente:
 
 $ git add filmes.txt
 $ git commit -m "Inserindo nova citacao"
 
-Para verificar o hist�rico das altera��es gravadas no reposit�rio, podemos executar o comando git log:
+Para verificar o histórico das alterações gravadas no repositório, podemos executar o comando git log:
 
 $ git log
 
-Criando um reposit�rio no GitHub
+Criando um repositório no GitHub
 
-No Repository name, devemos preencher o nome do reposit�rio remoto.
-No nosso caso, vamos preencher com �citacoes�.
+No Repository name, devemos preencher o nome do repositório remoto.
+No nosso caso, vamos preencher com “citacoes”.
 
-Ent�o, execute o comando git remote, conforme o que segue:
+Então, execute o comando git remote, conforme o que segue:
 
 $ git remote add origin https://github.com/souzaleandror/comandos-gits
 
@@ -59,32 +59,32 @@ $ git push origin master
 Para informar ao Git que o arquivo index.html deve ser rastreado, utilizamos o comando:
 $ git add index.html
 
-Na verdade, n�o! Podemos rastrear todos esses arquivos de uma vez s� com o comando:
+Na verdade, não! Podemos rastrear todos esses arquivos de uma vez só com o comando:
 $ git add .
 
-A �rea de stage
-Quando informamos para o Git que queremos rastrear um arquivo, executando git add pela primeira vez, o Git coloca esse arquivo em uma �rea especial do reposit�rio, chamada de stage.
+A área de stage
+Quando informamos para o Git que queremos rastrear um arquivo, executando git add pela primeira vez, o Git coloca esse arquivo em uma área especial do repositório, chamada de stage.
 
-Ser� que teremos sempre que lembrar de evitar o git add desses arquivos?
-Se for assim, n�o poderemos mais utilizar git add ., j� que esse comando rastreia todos os arquivos.
+Será que teremos sempre que lembrar de evitar o git add desses arquivos?
+Se for assim, não poderemos mais utilizar git add ., já que esse comando rastreia todos os arquivos.
 Para resolver isso, o Git tem um mecanismo que permite ignorarmos arquivos.
-Basta criarmos umarquivo chamado .gitignore no diret�rio principal do nosso projeto, com os nomes dos arquivos que queremos ignorar.
+Basta criarmos umarquivo chamado .gitignore no diretório principal do nosso projeto, com os nomes dos arquivos que queremos ignorar.
 
-Observe, por�m, que o arquivo .gitignore apareceu como n�o rastreado.
-� importante que esse arquivo seja rastreado, porque evoluir� junto com o reposit�rio. Por isso, ao criar o .gitignore, n�o esque�a de adicion�-lo � �rea de stage com o comando:
+Observe, porém, que o arquivo .gitignore apareceu como não rastreado.
+É importante que esse arquivo seja rastreado, porque evoluirá junto com o repositório. Por isso, ao criar o .gitignore, não esqueça de adicioná-lo à área de stage com o comando:
 $ git add .gitignore
 
 todo.txt
 tmp/
 
-H� um projeto no GitHub com exemplos de arquivos .gitignore
-para diversas linguagens de programa��o e tecnologias: https://github.
+Há um projeto no GitHub com exemplos de arquivos .gitignore
+para diversas linguagens de programação e tecnologias: https://github.
 com/github/gitignore
 
-Rastreando e comitando mudan�as de uma s� vez
+Rastreando e comitando mudanças de uma só vez
 $ git commit -a -m "Inserindo titulo e diminuindo tamanho da pagina"
 
-Verificando o hist�rico do seu reposit�rio
+Verificando o histórico do seu repositório
 $ git log
 $ git log -n 2
 $ git log --oneline
@@ -92,14 +92,153 @@ $ git log --stat
 $ git log -n 2 --oneline --stat
 
 Para sairmos do resultados do git log, devemos apertar a tecla q.
-Podemos tamb�m combinar as v�rias op��es do comando git log
+Podemos também combinar as várias opções do comando git log
 
-Verificando mudan�as ainda n�o rastreadas
-Se quisermos revisar amodifica��o efetuada, verificando as diferen�as entre
+Verificando mudanças ainda não rastreadas
+Se quisermos revisar amodificação efetuada, verificando as diferenças entre
 o arquivo alterado e o que foi comitado anteriormente, podemos usar o
 comando:
 $ git diff
 
-� poss�vel mostrar as diferen�as entre os arquivos na �rea de stage e a
-�ltima vers�o que foi comitada utilizando a op��o --staged:
+É possível mostrar as diferenças entre os arquivos na área de stage e a
+última versão que foi comitada utilizando a opção --staged:
 $ git diff --staged
+
+A remoção do arquivo e adição na stage podem ser realizadas de uma vez
+só através do comando:
+$ git rm produtos.html
+
+Renomeando arquivos
+
+$ git mv estilos.css principal.css
+
+Movendo arquivos
+
+$ git mv principal.js js/principal.js
+
+Desfazendo mudanças
+
+Desfazendo mudanças não rastreadas
+
+$ git checkout -- index.html
+
+O comando git checkout desfaz as alterações ainda não rastreadas,
+ou seja, que ainda não estão na área de stage, voltando ao conteúdo anterior
+do arquivo.
+
+E se apagarmos algum arquivo sem querer?
+
+Vamos dizer que apagamos o arquivo index.html.
+
+$ git checkout -- index.html
+
+Desfazendo mudanças já rastreadas
+
+$ git reset -- index.html
+
+Quando utilizado dessa maneira, apenas informandoumarquivo que tem
+mudanças na área de stage, o comando git reset retira o arquivo da stage
+mas preserva tudo o que foi modificado nesse arquivo.
+
+Se invocarmos o comando git reset sem nenhum parâmetro, serão
+retirados todos os arquivos da área de stage. As alterações efetuadas
+nesses arquivos serão preservadas.
+
+No caso de querermos descartar todas as mudanças nos arquivos ao invocarmos
+git reset, devemos utilizar a opção --hard.
+
+Há um detalhe importante: a opção --hard retira todos os arquivos da
+área de stage e desfaz todas as alterações nesses arquivos. No fim das contas,
+o repositório fica exatamente no estado que estava no último commit.
+
+Desfazendo mudanças já comitadas
+
+Depois, comitamos as alterações:
+$ git commit -am "Adicionando texto peculiar"
+
+Na saída, teríamos algo como:
+
+[master 6111116] Adicionando texto peculiar
+1 file changed, 1 insertion(+)
+
+Se quisermos voltar atrás, desfazendo as alterações no repositório, podemos utilizar o comando:
+$ git revert --no-edit 6111116
+
+Nesse comando, o código 6111116 representa o último commit efetuado.
+
+Se omitirmos a opção --no-edit, será aberto um editor de texto para editarmos a mensagem do novo commit.
+
+Criando um repositório remoto
+
+A criação do repositório remoto é feita com o comando git init, da  mesma maneira que fizemos para criar o repositório local, entretanto devemos passar o parâmetro --bare ao comando:
+
+$ git init --bare moveis-ecologicos.git
+
+Ao executar o comando, será apresentada uma mensagem como:
+Initialized empty Git repository
+in /opt/repositorios/moveis-ecologicos.git/
+
+4.2 Adicionando o repositório remoto
+
+Supondo que o nosso servidor esteja na rede com o endereço IP 192.168.1.1 , e o repositório remoto do nosso projeto tenha sido criado
+no diretório /opt/repositorios/moveis-ecologicos.git, para adicionarmos o repositório remoto devemos executar o comando git remote
+add da seguinte maneira:
+
+$ git remote add servidor file://192.168.1.1/opt/repositorios/moveis-ecologicos.git
+
+Listando os repositórios remotos
+Para listar os repositórios remotos que foram adicionados devemos utilizar o comando git remote:
+$ git remote
+servidor
+
+Mas repare que é exibido apenas o name dos repositórios remotos. Para que também seja exibida a url devemos adicionar o parâmetro -v ao comando:
+$ git remote -v
+
+Observe que o repositório remoto foi listado duas vezes. Isso acontece pois o Git permite que tenhamos duas URLs distintas para o mesmo repositório remoto, sendo uma para leitura (fetch) e outra para escrita (push). Isto pode ser útil se precisarmos utilizar protocolos distintos para leitura e escrita.
+
+Alterando e removendo os repositórios remotos
+
+É possível alterar o name deumrepositório remoto utilizando o comando
+git remote rename:
+
+$ git remote rename servidor outronome
+$ git remote
+
+O que aconteceria se alguém alterasse o endereço IP do servidor de 192.168.1.1 para 192.168.1.2 ? Teríamos um problema, pois nosso repositório remoto estaria apontando para o endereço antigo. Devemos nesse caso alterar a url do repositório remoto, e isto é feito com outro comando, o git remote set-url, passando como parâmetro o name do repositório remoto e a nova url:
+
+$ git remote -v
+servidor file://192.168.1.1/opt/repositorios/
+moveis-ecologicos.git (fetch)
+servidor file://192.168.1.1/opt/repositorios/
+moveis-ecologicos.git (push)
+
+$ git remote set-url servidor
+file://192.168.1.2/opt/repositorios/moveis-ecologicos.git
+
+$ git remote -v
+servidor file://192.168.1.2/opt/repositorios/
+moveis-ecologicos.git (fetch)
+servidor file://192.168.1.2/opt/repositorios/
+moveis-ecologicos.git (push)
+
+4.3 Enviando commits para o repositório remoto
+
+Para enviar os commits locais, que ainda não existem no servidor, devemos  utilizar o comando git push, informando o name do repositório remoto, no nosso caso servidor, seguido de master: 
+
+$ git push servidor master
+
+A palavra master que utilizamos no comando anterior é o nome da branch principal do nosso repositório. Estudaremos branches com
+profundidade mais adiante.
+
+Clonando o repositório remoto
+
+Para obtermos uma cópia de um repositório Git, devemos utilizar o comando git clone informando a URL do repositório a ser clonado:
+
+$ git clone file://192.168.1.1/opt/repositorios/
+moveis-ecologicos.git
+
+Sincronizando o repositório local
+
+A sincronização do repositório local com o servidor é feita com o uso do comando git pull, onde devemos informar o name do repositório remoto que queremos sincronizar, e o nome da branch local a ser atualizada:
+$ git pull servidor master
+
