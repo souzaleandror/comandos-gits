@@ -242,3 +242,16 @@ Sincronizando o repositório local
 A sincronização do repositório local com o servidor é feita com o uso do comando git pull, onde devemos informar o name do repositório remoto que queremos sincronizar, e o nome da branch local a ser atualizada:
 $ git pull servidor master
 
+Protocolos suportados pelo Git
+• Local
+• SSH
+• Git
+• HTTP/HTTPS
+
+Protocolo local
+
+A utilização do protocolo local é feita com o uso do prefixo file:// na URL do repositório a ser clonado:
+$ git clone file:///opt/repositorios/moveis-ecologicos.git
+
+É possível omitir o prefixo file:// na URL, bastando apenas informar o caminho do repositório:
+$ git clone /opt/repositorios/moveis-ecologicos.git
