@@ -255,3 +255,84 @@ $ git clone file:///opt/repositorios/moveis-ecologicos.git
 
 É possível omitir o prefixo file:// na URL, bastando apenas informar o caminho do repositório:
 $ git clone /opt/repositorios/moveis-ecologicos.git
+
+
+Protocolo SSH
+O protocolo SSH é, provavelmente, o mais utilizado, por ser rápido, se- guro, simples de configurar e por suportar tanto a leitura quanto a escrita de dados.
+
+O uso do protocolo SSH é feito com a URL seguindo o padrão usuario@servidor:/caminho/repositorio.git. Por exemplo:
+$ git clone root@192.168.1.1:/opt/repositorios/moveis-ecologicos.git
+
+Protocolo Git
+
+Para clonar um repositório utilizando o protocolo Git, a URL deve possuir o prefixo git://:
+$ git clone git://192.168.1.1/opt/repositorios/
+moveis-ecologicos.git
+
+Protocolo HTTP/HTTPS
+
+
+ParaclonarumrepositórioutilizandooprotocoloHTTP,aURLdevepos- suir o prefixo http://:
+$ git clone http://192.168.1.1/opt/repositorios/moveis-ecologicos.git
+
+Também é possível utilizar o protocolo HTTPS, que adiciona uma ca- mada de segurança sobre o HTTP, com a utilização do protocolo SSL/TLS:
+
+$ git clone https://192.168.1.1/opt/repositorios/moveis-ecologicos.git
+
+Hospedando o repositório no GitHub
+
+Serviços de hospedagem de projetos:
+• GitHub
+• Bitbucket
+• GoogleCode
+
+GitHub: a rede social dos desenvolvedores
+O GitHub é também uma ferramenta colaborativa, pois nos permite in- teragir nos repositórios, por meio de algumas funcionalidades como:
+• Issue Tracker: para criação e gestão de bugs e milestones do projeto;
+• Pull Requests: para que outros usuários possam enviar seus commits com alterações no projeto, ou commits com correções de bugs;
+• Commit Comments: para que os usuários possam comentar e discutir sobre as modificações no código, de um determinado commit.
+
+Criando o repositório do projeto
+
+Agora que temos um usuário cadastrado, já é possível criar o repositório do projeto.
+Para criar um novo repositório no GitHub, devemos acessar a URL http: //github.com/new ou clicar no botão New repository existente na página principal.
+
+Agora basta adicionarmos o repositório remoto, com o comando git remote add, conforme exibido na página do repositório:
+$ git remote add origin https://github.com/fulanodasilva/moveis-ecologicos.git
+
+Enviando os commits do projeto para o GitHub
+
+O envio dos commits é feito da mesma maneira que vimos no capítulo anterior, ou seja, utilizando o comando git push:
+$ git push origin master
+
+Para que um novo desenvolvedor obtenha uma cópia do repositório, ele agora deverá clonar o repositório remoto localizado no GitHub:
+$ git clone https://github.com/fulanodasilva/moveis-ecologicos.git
+
+Colaborando com projetos open source
+
+Primeiramente vamos precisar clonar o repositório, para termos acesso ao código-fonte, e então efetuar as melhorias desejadas:
+$ git clone https://github.com/caelum/vraptor4.git
+
+Pronto! Já temos uma cópia do repositório com todos os arquivos do projeto. Agora basta efetuar as melhorias desejadas, registrando as alterações realizadas com commits.
+Mas lembre-se de que os commits realizados existem apenas no nosso repositório local, precisamos agora enviá-los para o repositório remoto do projeto, no GitHub, com o comando git push:
+$ git push origin master
+
+O problema é que o usuário fulanodasilva não tem permissão para enviar commits para o repositório do VRaptor, pois esse repositório não per- tence a ele, mas sim ao usuário caelum.
+Para resolver esse problema, o usuário caelum poderia acessar a página de configurações do repositório VRaptor no GitHub, e adicionar o usuário fulanodasilva como colaborador.
+
+Pull requests
+A solução do GitHub para a colaboração com projetos open source, foi uma funcionalidade chamada de pull requests.
+Primeiramente, devemos acessar a página do projeto que queremos cola- borar no GitHub, no nosso caso http://github.com/caelum/vraptor4, e clicar no botão Fork:
+
+Ao clicar no botão Fork, o GitHub criará uma cópia do repositório do VRaptor no nosso usuário do GitHub:
+
+
+Repare que agora o nosso usuário do GitHub possui um repositório cha- mado vraptor4, ou seja, esse repositório é a nossa versão do projeto.
+O próximo passo é clonar o repositório a partir do nosso usuário do GitHub, e não do usuário caelum, pois assim conseguiremos realizar o push dos commits locais para o nosso repositório no GitHub:
+$ git clone https://github.com/fulanodasilva/vraptor4.git
+
+Agora, após realizar as alterações e commits no projeto, conseguiremos realizar o push normalmente, pois o repositório remoto no GitHub pertence ao nosso usuário.
+Entretanto, os commits foram enviados apenas para o nosso repositório no GitHub.
+Para que os commits sejam integrados ao repositório original do projeto, no caso o repositório vraptor4 do usuário caelum, devemos enviar um Pull Request para o usuário caelum, solicitando que seja feito um pull dos nossos commits.
+Para criar um Pull Request devemos acessar a página do nosso repo- sitório no GitHub, clicar no link Pull Requests, e em seguida clicar no botão New pull request:
+
