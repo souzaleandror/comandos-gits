@@ -336,3 +336,103 @@ Entretanto, os commits foram enviados apenas para o nosso repositório no GitHub
 Para que os commits sejam integrados ao repositório original do projeto, no caso o repositório vraptor4 do usuário caelum, devemos enviar um Pull Request para o usuário caelum, solicitando que seja feito um pull dos nossos commits.
 Para criar um Pull Request devemos acessar a página do nosso repo- sitório no GitHub, clicar no link Pull Requests, e em seguida clicar no botão New pull request:
 
+Organizando o trabalho com branches
+
+Trabalhando em paralelo com branches
+
+A maioria dos sistemas de controle de versão permite trabalho em para- lelo através de branches. Uma branch é uma linha independente de desenvol- vimento em que podemos comitar novas versões do código sem afetar outras branches.
+
+Em muitos sistemas de controle de versão, utilizar branches é algo bas- tante lento e trabalhoso. Porém, a estrutura interna do Git permite lidarmos com branches de maneira muito rápida e leve.
+
+A branch master
+
+Para listar as branches do nosso repositório, devemos executar o co- mando:
+$ git branch
+Teremos como resposta:
+* master
+
+Se quisermos listar as branches existentes no nosso repositório com os commits associados, poderíamos utilizar a opção -v do comando git branch:
+$ git branch -v
+A resposta, no nosso caso, seria:
+* master b92285b Revert "Adicionando texto peculiar"
+
+Podemos observar os commits com seus respectivos pais executando o comando git log com a opção --parents.
+Já para verificarmos o commit para o qual a master está apontando, passamos a opção --decorate para o comando git log.
+Juntando as opções, podemos executar git log --oneline --decorate --parents para exibir o histórico resumido do nosso repositório com o commit para o qual a master está apontado e os commits pai de cada commit. Teríamos uma saída parecida com:
+
+Criando uma branch
+Para criarmos uma branch chamada design para trabalharmos na melhoria do design basta executarmos:
+$ git branch design
+
+A nova branch que acabamos de criar ( design) aponta para o mesmo commit que a branch que estávamos anteriormente ( master). Podemos ve- rificar isso com o comando git branch -v:
+
+Trocando de branch
+
+Já criamos nossa branch design mas ainda estamos na master. Para tro- carmos para a branch recentemente criada, devemos executar:
+
+$ git checkout design
+Deve aparecer como resposta:
+Switched to branch ’design’
+
+Depois de executar o comando anterior, o HEAD passa a apontar para a nova branch design.
+Se executarmos o comando git branch -v, teremos:
+* design b92285b Revert "Adicionando texto peculiar"
+  master b92285b Revert "Adicionando texto peculiar"
+  
+Conforme vimos no capítulo 3, o comando git checkout, além de trocar a branch atual, também pode ser usado para descartar mudanças de um arquivo que ainda não estão na área de stage. Para descartarmos as mudanças do arquivo index.html, por exemplo, devemos executar git checkout -- index.html.
+
+Na verdade, a opção -- não é estritamente necessária. Porém, é uma boa prática, já que serve para informar que se trata de um arquivo. Dessa maneira, ajuda a evitar problemas caso uma branch tenha o mesmo nome de algum arquivo.
+
+Criando e já trocando para uma nova branch
+
+Criar uma branch loja com git branch só para depois mudar para a nova branch com git checkout é algo tedioso.
+Seria interessante já criarmos e mudarmos para a nova branch loja de uma só vez. Podemos fazer isso passando a opção -b para o comando git checkout:
+$ git checkout -b loja
+A saída apresentada seria:
+Switched to a new branch ’loja’
+
+Deletando uma branch
+
+Não é possível remover uma branch enquanto estivermos nela. Por isso, devemos ir para outra branch. Para ir para a branch master, devemos exe- cutar git checkout master.
+Para deletar uma branch, devemos utilizar a opção -d do comando git branch:
+$ git branch -d loja
+Deve aparecer uma mensagem como a seguir:
+Deleted branch loja (was b92285b).
+
+
+Se já tivéssemos feito algum commit na branch loja, ao executarmos git branch -d loja teríamos como resposta:
+error: The branch ’loja’ is not fully merged.
+If you are sure you want to delete it, run ’git branch -D loja’.
+Não é possível deletar com a opção -d uma branch que possui commits ainda não aplicados em outras branches (veremos como mesclar branches mais adiante).
+Para removermos a branch loja se tivermos feito algum commit, deve- mos utilizar a opção -D:
+$ git branch -D loja
+Teríamos na saída:
+Deleted branch loja (was b92285b).
+
+Voltando para o master e fazendo uma alteração
+A primeira coisa que devemos fazer é voltar para a branch master, exe- cutando o comando git checkout master.
+
+Mesclando alterações (Branches)
+
+Verificando branches ainda não mescladas
+
+Considerando que estamos na branch master, podemos verificar as branches ainda não mescladas com a opção --no-merged do comando git branch:
+$ git branch --no-merged
+Teríamos a seguinte saída:
+design
+
+sso indica que há mudanças ainda não mescladas na branch design.
+O comando git branch também tem a opção --merged. Se execu- tássemos git branch --merged, teríamos:
+* master
+
+Para juntarmos todas as alterações que fizemos na branch design com as da branch master, mesclando as duas, podemos utilizar o comando:
+$ git merge design -m "Mesclando com a branch design"
+
+Mesclando alterações com rebase
+
+Há uma maneira alternativa de mesclar as alterações de duas branches
+que simplifica o histórico do projeto. Considerando que estamos na branch master, em vez de utilizar git merge, é possível utilizar:
+$ git rebase design
+Na saída, deve aparecer algo como:
+First, rewinding head to replay your work on top of it...
+Applying: Alterando textos do banner
