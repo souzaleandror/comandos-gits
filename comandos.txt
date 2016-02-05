@@ -433,6 +433,66 @@ Mesclando alterações com rebase
 Há uma maneira alternativa de mesclar as alterações de duas branches
 que simplifica o histórico do projeto. Considerando que estamos na branch master, em vez de utilizar git merge, é possível utilizar:
 $ git rebase design
-Na saída, deve aparecer algo como:
+Na saída, deve aparecer algo como:  
 First, rewinding head to replay your work on top of it...
 Applying: Alterando textos do banner
+
+
+Trabalhando em equipe com branches remotas
+
+Podemos listar as branches remotas passando a opção -r para o comando git branch:
+$ git branch -r
+Teremos na saída:
+origin/master
+
+Se quisermos mostrar tanto as branches locais como as remotas, po- demos utilizar o comando git branch -a.
+
+Para vermos para quais commits as branches remotas estão apontando, podemos utilizar o comando anterior com a opção -v:
+$ git branch -r -v
+
+Compartilhando branches
+A branch design ainda não existe lá no GitHub. Para compartilhá-la deve- mos informar os nomes do remote e da branch para o comando git push:
+$ git push origin design
+
+Obtendo novas branches remotas em outros repositórios
+
+Então, chamado vamos outro,
+clonar o repositório em um diretório executando o comando git clone
+git@github.com:fulanodasilva/moveis-ecologicos.git outro.
+Depois de clonar o repositório, é importante entrar no diretório, com o comando cd outro.
+Se listarmos as branches locais e remotas com o comando git branch -a -v, teremos:
+
+Porém, não temos ainda uma branch local design. Se precisarmos tra- balhar nessa branch no novo repositório outro, precisamos executar o se- guinte comando:
+$ git checkout -b design origin/design
+
+Branches locais criadas a partir de branches remotas são chamadas de
+tracking branches.
+Se executarmos git branch -a -v novamente, teremos:
+
+Uma outra maneira, mais sucinta, de criar uma tracking branch é uti- lizar a opção -t do comando git checkout.
+No nosso caso, faríamos git checkout -t origin/design. Seria criada localmente a tracking branch design relacionada com a branch remota origin/design.
+
+Obtendo commits de uma branch remota Um novo commit
+
+Trazendo commits de um repositório remoto com fetch
+Para obtermos os commits da branch remota origin/master no nosso repositório outro, podemos executar o comando:
+$ git fetch origin
+
+Com o comando git fetch, trazemos os commits de uma branch re- mota que ainda não estavam presentes localmente.
+
+Porém, os novos commits da branch remota origin/master ainda não foram aplicados na branch local master, o que podemos constatar execu- tando o comando git branch -a -v:
+
+Mesclando branches remotas e locais
+Mesclando branches remotas e locais com merge
+
+Obtendo commits e mesclando de uma vez com pull
+Para obtermos e mesclarmos os novos commits de uma branch remota com uma branch local poderíamos ter usado um comando só:
+$ git pull
+
+Para saber mais: Qual usar? Um pull ou um pull --rebase?
+Usar git pull ou git pull --rebase ao mesclar com mudanças remotas é uma questão parecida com a de se devemos usar git merge ou git rebase para mesclagens locais.
+
+Para removermos definitivamente a branch remota origin/contato e a branch contato lá do GitHub, devemos executar:
+$ git push origin :contato
+
+
