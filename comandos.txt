@@ -495,4 +495,65 @@ Usar git pull ou git pull --rebase ao mesclar com mudanças remotas é uma quest
 Para removermos definitivamente a branch remota origin/contato e a branch contato lá do GitHub, devemos executar:
 $ git push origin :contato
 
+Controlando versões do código com tags
+
+Em sistemas de controle de versão, essas fotos de um determinado ins- tante de um repositório são chamadas de tags.
+
+Criando, listando e deletando tags
+Para criarmos uma tag v1.0 no Git, devemos executar o comando: 
+
+$ git tag v1.0
+
+Se quisermos listar as tags do nosso repositório, basta executarmos:
+$ git tag
+
+Podemos criar uma tag para um commit passado. Se quisermos criar uma tag chamada banners para o commit 2223859 (Alterando textos do ban- ner), devemos executar:
+$ git tag banners 2223859
+
+Imagine que tenhamos errado o nome de uma tag. Por exemplo, criamos a tag verssao1 com o comando git tag verssao1. Podemos deletá-la com o comando:
+$ git tag -d verssao1
+
+Mais informações com tags anotadas
+
+Se desejarmos manter mais informações como quando uma tag foi criada, quem a criou, além de termos uma mensagem descritiva, devemos criar tags anotadas.
+$ git tag -a v1.1 -m "Liberando versão urgente"
+
+Podemos exibir as informações de uma tag anotada com o comando:
+$ git show -s v1.1
+
+Compartilhando tags com a sua equipe
+
+Para compartilhar tags, fazemos de maneira parecida com o que fizemos com branches, utilizando o comando git push. Para compartilhar a tag v1.0, devemos executar o comando:
+$ git push origin v1.0
+
+
+Se quisermos enviar todas as novas tags do repositório local para um repositório remoto podemos utilizar o comando git push com a opção --tags:
+$ git push origin --tags
+
+Lidando com conflitos
+
+Mesclando mudanças em um mesmo arquivo sem conflitos
+
+Conflitos após um merge com mudanças em um mesmo arquivo
+
+
+Mesmo sendo muito bom para fazer o merge automático, dessa vez o Git não conseguiu mesclar o arquivo index.html de maneira clara porque fo- ram feitas alterações na mesma região do arquivo.
+De forma cautelosa, o Git marcou um conflito com os caracteres <, = e >.
+Entre os textos <<<<<<< HEAD e ======= estão as alterações que fize- mos na branch master, que é a branch atual, para qual o HEAD está apon- tando.
+Já entre ======= e >>>>>>> design, estão as alterações que fizemos na branch design.
+
+Para informarmos para o Git que resolvemos o conflito no arquivo, temos que adicioná-lo à área de stage executando git add index.html.
+
+Repare que o arquivo index.html aparece como modificado e está pronto para ser comitado.
+Depois disso, falta comitarmos as mudanças com o comando git commit -am "Resolvendo conflitos após merge de design". Como resposta, veremos:
+
+Resolvendo conflitos após um rebase
+
+Usando uma ferramenta para resolver conflitos
+Com Git, podemos invocar uma ferramenta de resolução de conflitos com o comando:
+$ git mergetool
+
+Podemos, então, comitar o arquivo index.html agora sem con- flitos, executando git commit -am "Resolvendo conflitos após merge de design". Na saída, teremos:
+
+
 
