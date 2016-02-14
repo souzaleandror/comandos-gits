@@ -556,4 +556,4 @@ $ git mergetool
 Podemos, então, comitar o arquivo index.html agora sem con- flitos, executando git commit -am "Resolvendo conflitos após merge de design". Na saída, teremos:
 
 
-
+ola mundo
