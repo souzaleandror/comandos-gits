@@ -1,0 +1,24 @@
+  392  git init
+  393  git add README.md
+  394  git remote add origin git@github.com:souzaleandror/estudo-linux.git
+  395  git push -u origin master
+  396  touch estudos.txt
+  397  git add estudos.txt 
+  398  git commit -am "Comecando"
+  399  git push master
+  400  ls -ltra
+  401  history
+  402  git status
+  403  echo "# estudo-linux" >> README.md
+  404  git init
+  405  git add README.md
+  406  git commit -m "first commit"
+  407  git remote add origin git@github.com:souzaleandror/estudo-linux.git
+  408  git push -u origin master
+  
+  
+  521  git pull origin master
+  522  cat estudos.txt 
+  523  git add .
+  524  git commit -am "So atualizando as pastas e o resto"
+  525  git push origin master
