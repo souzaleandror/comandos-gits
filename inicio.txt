@@ -22,3 +22,12 @@
   523  git add .
   524  git commit -am "So atualizando as pastas e o resto"
   525  git push origin master
+
+  631  git status
+  632  git remote -v
+  633  git push git@github.com:souzaleandror/estudo-linux.git
+  634  git pull origin master
+  635  cat estudos.txt 
+  636  git add .
+  637  git commit -am "ADD VI/VIM/NANO/CAT - TAR/GZIP/ZIP"
+  638   git push origin master
